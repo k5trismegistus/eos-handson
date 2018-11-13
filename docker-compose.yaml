@@ -1,0 +1,14 @@
+version: '3'
+services:
+  dev:
+    build: .
+    volumes:
+      - ./contracts:/mycontracts
+    links:
+      - nodeos
+  nodeos:
+    image: eosio/eos-dev:v1.2.4
+    ports:
+      - 8888:8888
+    command:
+      nodeos -e -p eosio --plugin eosio::producer_plugin --plugin eosio::history_plugin --plugin eosio::chain_api_plugin --plugin eosio::history_api_plugin --plugin eosio::http_plugin -d /mnt/dev/data --config-dir /mnt/dev/config --http-server-address=0.0.0.0:8888 --access-control-allow-origin=* --contracts-console --http-validate-host=false
