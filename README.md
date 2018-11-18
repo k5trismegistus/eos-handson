@@ -16,7 +16,7 @@ $ docker-compose build
 ## 動かし方
 
 ```bash
-$ docker-compose run --rm bash
+$ docker-compose run --rm  bash
 
 # nodeosが起動していることを確認
 > cleos -u http://nodeos:8888 get info
